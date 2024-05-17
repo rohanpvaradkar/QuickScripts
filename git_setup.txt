@@ -1,0 +1,44 @@
+generate ssh keys:
+ssh-keygen -t ed25519 -C "your_email@example.com"
+
+Add SSH Key to ssh-agent
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+
+copy ssh key
+cat ~/.ssh/id_ed25519.pub
+
+add this public key in your github account
+
+
+example of configure two github accounts
+C:\Users\rohan\.ssh
+open config 
+add
+
+# GitHub account associated with rohanv111@gmail.com
+Host github.com-rohanv11
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+
+# GitHub account associated with rohan@gmail.com
+Host github.com-rohanpvaradkar
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_gamedev
+    IdentitiesOnly yes
+
+
+rohanpvaradkar, rohanv11 == these are the alias to use
+
+update remote based on your account to use
+git remote add origin git@github.com-rohanv11:your-username/your-repository.git
+
+git remote add origin git@github.com-rohanpvaradkar:your-username/your-repository.git
+
+
+
+
